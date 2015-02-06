@@ -31,7 +31,12 @@ using namespace std;
 	}
 	void Password::addWord(String* word)
 	{
+		if (all_words->size()==0)
+        {
+           len=word->length();
+        }
 		all_words->add(word);
+		viable_words->add(word);
 	}
 	
 	void Password::guess(int try_password, int num_matches)
