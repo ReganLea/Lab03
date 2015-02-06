@@ -1,4 +1,7 @@
 #include "Password.h"
+#include "ReadFile.h"
+#include "Keyboard.h"
+#include "Text.h"
 //fill in includes, don't forget namespaces
 
 #include <iostream>
