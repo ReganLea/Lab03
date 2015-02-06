@@ -29,18 +29,24 @@ using namespace std;
 	{
 		all_words->add(word);
 	}
-	//finished?
+	
 	void Password::guess(int try_password, int num_matches)
 	{
+		ListArray<String>*  newViableWords = new ListArray<String>(); 
+		String* test =new String();o
 		String* guessed_word = getOrginalWord(try_password);
-		
+		//num_matches represents the correct characters from the guessed word
+		if (getNumMatches (guessed_word) == num_matches)
+		{
+			
+		}
 	}
-	//edited
+	
 	int Password::getNumberOfPasswordsLeft()
 	{
 		return viable_words->size();
 	}
-	//edited 
+	
 	void Password::displayViableWords()
 	{
 		ListArrayIterator<String>* iter = viable_words->iterator();
@@ -50,10 +56,11 @@ using namespace std;
 			word->displayString();
 		}
 	}
-	//edited 
+	
 	String* Password::getOriginalWord(int index)
 	{
-		
+		String* oWord = all_words->get(index);
+		return oWord; 
 	}
 
 int Password::bestGuess()
