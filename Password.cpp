@@ -1,16 +1,20 @@
 #include "Password.h"
+#include "Text.h"
+#include "ListArrayIterator.h"
+#include "ListArray.h"
+
 using CSC2110::ListArrayIterator;
 
 #include <iostream>
 using namespace std;
 
-	Password::Password()
-	{
+   Password::Password()
+   {
 		viable_words = new ListArray<String> (); 
 		all_words = new ListArray<String> ();
 		len = 0; 
-	}
-   Password::~Password();
+   }
+   Password::~Password()
    {
 		delete viable_words; 
 		delete all_words; 
@@ -32,14 +36,18 @@ using namespace std;
 	
 	void Password::guess(int try_password, int num_matches)
 	{
-		ListArray<String>*  newViableWords = new ListArray<String>(); 
-		String* test =new String();o
-		String* guessed_word = getOrginalWord(try_password);
-		//num_matches represents the correct characters from the guessed word
-		if (getNumMatches (guessed_word) == num_matches)
+		ListArray<String>* tempList;
+		ListArrayIterator<String>* iterator = viable_words->iterator();
+		while(iterator->hasNext())
 		{
-			
-		}
+		   String* tempString = iterator->next();
+		   if (getNumMatches(tempString, getOriginalWord(num_matches))==num_matches)
+		   {
+		      tempList->add(tempString);
+		   }
+	    }
+        delete viable_words;
+        viable_words = tempList;
 	}
 	
 	int Password::getNumberOfPasswordsLeft()
@@ -59,7 +67,7 @@ using namespace std;
 	
 	String* Password::getOriginalWord(int index)
 	{
-		String* oWord = all_words->get(index);
+		String* oWord = all_words->get(index-1); //Remember that this is 1-based
 		return oWord; 
 	}
 
