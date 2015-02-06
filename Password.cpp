@@ -38,14 +38,17 @@ using namespace std;
 	//edited
 	int Password::getNumberOfPasswordsLeft()
 	{
-		int numOfPasswordsLeft; 
-		//where do you get the passwords from?
-		return numOfPasswords; 
+		return viable_words->size();
 	}
 	//edited 
 	void Password::displayViableWords()
 	{
-		return viable_words
+		ListArrayIterator<String>* iter = viable_words->iterator();
+		while(iter->hasNext())
+		{
+			String* word = iter->next();
+			word->displayString();
+		}
 	}
 	//edited 
 	String* Password::getOriginalWord(int index)
